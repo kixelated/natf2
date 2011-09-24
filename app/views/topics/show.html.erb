@@ -43,13 +43,14 @@
 
 <% unless %w(search).include?(current_controller) %>
   <div class="info-left info-space info-width info-footer info-prev">
-    <%= prev_page @posts %>
+
   </div>
   <div class="info-center info-space info-width info-footer info-page">
     <%= current_page @posts %>
   </div>
   <div class="info-right info-space info-width info-footer info-next">
-    <%= next_page @posts %>
+    <span class="title">&nbsp;</span>
+    <span class="detail"><%= will_paginate @posts, :inner_window => 1, :outer_window => 0, :prev_label => '&laquo; '+I18n.t(:prev) %></span>
   </div>
   <div class="clear"> </div>
 <% end %>
