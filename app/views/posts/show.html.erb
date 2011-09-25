@@ -2,13 +2,27 @@
 <table class="thread" cellspacing="0" id="p<%= post.id %>">
   <thead>
     <tr>
-      <th><%= time_ago_or_time_stamp(post.created_at, Time.now.utc, true, true) %></th>
-      <th class="thr">
+      <th>
         <% if %w(search posts users).include?(current_controller) %>
           <%= link_to (h(post.topic) + ' &raquo;').html_safe, topic_post_path(post) %>
         <% else %>
           <%= "#" + (index + @padding).to_s %>
         <% end %>
+      </th>
+      <th class="thr">
+        <div class="post-votes vote-enabled" style="float:right">
+          <span class="vote-count">
+            <% if post.plusminus > 0 %>
+              <font color="FF642A">+<%= render 'posts/votes', :target => post %></font>
+            <% else %>
+              <%= render 'posts/votes', :target => post %>
+            <% end %>
+              <b>Frags</b></span>
+            <% if logged_in? %>
+              <%= link_to "+", vote_up_post_path(post), :remote => true, :class => 'vote-up' %>
+              <%= link_to "&ndash;".html_safe, vote_down_post_path(post), :remote => true, :class => 'vote-down' %>
+            <% end %>
+        </div>
       </th>
     </tr>
   </thead>
@@ -22,21 +36,12 @@
             <%= link_to avatar_for(post.user), post.user unless post.user.avatar.nil? %>
           </dd>
           <dd><%=t :registered %>: <%= I18n.l(post.user.created_at, :format => :ed_month) %></dd>
-          <% unless post.user.is_online? %>
-            <dd><%=t :last_visit %>: <%= time_ago_or_time_stamp(post.user.online_at) %></dd>
-          <% end %>
           <dd><%=t :posts %>: <%= post.user.posts_count %></dd>
         </dl>
       </td>
       <td class="body">
         <div class="post-body">
-          <div class="post-votes vote-enabled" style="float:right">
-            <span class="vote-count"><%= render 'posts/votes', :target => post %></span>
-            <% if logged_in? %>
-              <%= link_to "+", vote_up_post_path(post), :remote => true, :class => 'vote-up' %>
-              <%= link_to "&ndash;".html_safe, vote_down_post_path(post), :remote => true, :class => 'vote-down' %>
-            <% end %>
-          </div>
+          
           <% if post.plusminus <= -20 %>
             <i><%=t :nuked_post %></i>
           <% else %>
@@ -59,11 +64,7 @@
     </tr>
     <tr>
       <td>
-        <% if post.user.is_online? %>
-          <b><%=t :online %></b>
-        <% else %>
-          <%=t :offline %>
-        <% end %>
+        <%= time_ago_or_time_stamp(post.created_at, Time.now.utc, true, true) %>
       </td>
       <td class="body links">
         <span id ="post-link-<%= post.id %>">
