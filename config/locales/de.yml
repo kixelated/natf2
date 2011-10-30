@@ -215,7 +215,7 @@ de:
     themes_info: Themen müssen kleiner als 50k sein.
     subscribe_info: E-Mail Aktualisierungupdates
     locked_info: Dieses Thema ist gesperrt
-    headers_info: Titelbilder sollten eine Größe von 760x200 Pixeln haben.
+    headers_info: Titelbilder sollten eine Größe von 960x200 Pixeln haben.
     
   mailer:
     new_message_posted: Eine neue Nachricht wurde veröffentlicht in 

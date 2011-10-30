@@ -214,7 +214,7 @@ da:
     no_subscriptions_info: Du har ingen nye abonnementer.
     subscribe_info: Email opdateringer
     locked_info: Dette emne er låst
-    headers_info: Størrelsen på bannere skal være 760x200 pixels.
+    headers_info: Størrelsen på bannere skal være 960x200 pixels.
     
   mailer:
     new_message_posted: En ny besked er sendt til

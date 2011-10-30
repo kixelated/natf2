@@ -216,7 +216,7 @@ en:
     no_subscriptions_info: You have no subscriptions.
     subscribe_info: Email updates
     locked_info: This Topic is Locked
-    headers_info: Headers should be sized 760x200px.
+    headers_info: Headers should be sized 960x200px.
 
   mailer:
     new_message_posted: A new message has been posted to
