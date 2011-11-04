@@ -3,7 +3,7 @@ xml.rss :version => "2.0" do
   xml.channel do
     xml.title "#{@settings.title}: Forum"
     xml.description "#{@settings.tagline}"
-    xml.link forum_root_url
+    xml.link forum_url
     for item in @topics
       xml.item do
         xml.title item.title
