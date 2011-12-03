@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    render :action => :new and return false unless @user.save
+    render :action => :new and return false unless false and @user.save
     if logged_in?
       redirect_to users_path and return true
     else
