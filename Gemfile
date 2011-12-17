@@ -26,7 +26,7 @@ gem 'prototype-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+ gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
   # Pretty printed test output
@@ -48,3 +48,6 @@ gem 'thumbs_up', '~> 0.4.1'
 
 # TODO: Find alternative
 gem 'prototype_legacy_helper', '0.0.0', :git => 'git://github.com/rails/prototype_legacy_helper.git'
+
+# Omniauth OpenID for Steam Integration
+gem 'omniauth-openid', :git => 'git://github.com/intridea/omniauth-openid.git'
