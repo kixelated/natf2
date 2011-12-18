@@ -16,6 +16,13 @@
   <% end %>  
   
   <p style="margin-top:20px">
+    <% if !@user.steamid.blank? %>
+      <a href="http://steamcommunity.com/profiles/<%= @user.steamid %>" target="_blank">
+        <img src="http://badges.steamprofile.com/profile/default/steam/<%= @user.steamid %>.png" border="0" alt="Steamprofile badge by Steamprofile.com">
+      </a>
+    <% end %>
+  </p>
+  <p>
     <b><%=t :registered %></b>: <%= time_ago_or_time_stamp(@user.created_at) %> &nbsp;
     <b><%=t :last_visit %></b>: <%= time_ago_or_time_stamp(@user.online_at) %> &nbsp;
     <b><%=t :profile_updated %></b>: <%= time_ago_or_time_stamp(@user.profile_updated_at) %>

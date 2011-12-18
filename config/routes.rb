@@ -144,4 +144,7 @@ Eldorado::Application.routes.draw do
   match 'files' => 'uploads#index'
   match 'forum' => 'forums#index'
   match 'help' => 'home#help'
+  
+  match '/auth/:provider/callback', to: 'users#steam_login'
+  match '/auth/failure', to: 'users#steam_login_failure'
 end
