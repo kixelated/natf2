@@ -24,13 +24,18 @@
     <tr>
       <td class="profile">
         <dl>
-          <dt><%= link_to h(post.user), post.user %></dt>
+          <dt><%= link_to h(post.user), post.user %>
+            <% if !post.user.steamid.blank? %>
+              &nbsp;<a href="http://steamcommunity.com/profiles/<%= post.user.steamid %>" target="_blank"><img style="margin-bottom:-3px" src="/images/social/steam.png" border="0"></a>      
+            <% end %>   
+          </dt>
           <dd class="rank"><%= rank_for(post.user) %></dd>
           <dd class="avatar">
             <%= link_to avatar_for(post.user), post.user unless post.user.avatar.nil? %>
           </dd>
           <dd><%=t :registered %>: <%= I18n.l(post.user.created_at, :format => :ed_month) %></dd>
           <dd><%=t :posts %>: <%= post.user.posts_count %></dd>
+      </a>
         </dl>
       </td>
       <td class="body">
