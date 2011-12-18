@@ -149,6 +149,7 @@ thead .tcm,.avatar-list,.avatar-show,.center{text-align:center;}
 .home-right .calendar-nav,.at_sign,#errorExplanation p{display:none;}
 .pagination,.fieldWithErrors{display:inline;}
 .calendar_date_select td:hover,.calendar_date_select td.selected{background-color:#D1D1D1;}
+.steam_icon { margin-bottom: -3px; }
 
 /*
 github.com style (c) Vasily Polovnyov <vast@whiteants.net>

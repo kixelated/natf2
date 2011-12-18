@@ -26,7 +26,7 @@
         <dl>
           <dt><%= link_to h(post.user), post.user %>
             <% if !post.user.steamid.blank? %>
-              &nbsp;<a href="http://steamcommunity.com/profiles/<%= post.user.steamid %>" target="_blank"><img style="margin-bottom:-3px" src="/images/social/steam.png" border="0"></a>      
+              &nbsp;<%= link_to steam_icon, steam_for(post.user) %>
             <% end %>   
           </dt>
           <dd class="rank"><%= rank_for(post.user) %></dd>
