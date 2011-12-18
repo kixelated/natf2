@@ -38,3 +38,6 @@ locale: # Choose a locale from config/locales, en is the default
 
 # DISABLE TABS (optional)
 disabled_tabs: # list tabs that want to hide from users (e.g. "blog events headers")
+
+# STEAM
+steam_api_key:
