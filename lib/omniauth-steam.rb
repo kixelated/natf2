@@ -1,7 +1,7 @@
 module OmniAuth
   module Strategies
     class Steam < OmniAuth::Strategies::OpenID
-      def initialize(app, store = nil, api_key = "6E729EA6A6980CA0E1D280B59B90EFFA", options = {}, &block)
+      def initialize(app, store = nil, api_key = Settings.steam_api_key, options = {}, &block)
         options[:identifier] ||= "http://steamcommunity.com/openid"
         options[:name] ||= 'steam'
         @api_key = api_key
