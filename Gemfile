@@ -48,3 +48,6 @@ gem 'thumbs_up', '~> 0.4.1'
 
 # TODO: Find alternative
 gem 'prototype_legacy_helper', '0.0.0', :git => 'git://github.com/rails/prototype_legacy_helper.git'
+
+# Omniauth OpenID for Steam Integration
+gem "omniauth-openid", "~> 1.0.1"

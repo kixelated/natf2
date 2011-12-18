@@ -11,6 +11,18 @@
       <%= f.password_field :password, :style => "width:15%" %> &nbsp;
       <%= f.password_field :password_confirmation, :style => "width:15%" %>
     </p>
+    <p class ="label"><label for="user_username">SteamID (You may NOT change this once you add it!)</label></p>
+    <p>
+      <% if @user.steamid.blank? %>
+        <a href="/auth/steam/"><img src="http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_small.png"></a> 
+        <br>
+        
+      <% else %>
+        <a href="http://steamcommunity.com/profiles/<%= @user.steamid %>" target="_blank">
+        <img src="http://badges.steamstatus.com/profile/default/steam/<%= @user.steamid %>.png" border="0" alt="Steamprofile badge by Steamprofile.com">
+        </a>
+      <% end %>
+    </p>    
     <p class="label"><label for="user_bio"><%=t :bio %></label></p>
     <p><%= f.text_area :bio, :rows => "3", :style => "width:50%;" %></p>
     <p class="label"><label for="user_signature"><%=t :signature %></label></p>
