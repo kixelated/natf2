@@ -53,4 +53,9 @@ class Post < ActiveRecord::Base
     body
   end
   
+  def plus_minus
+    tally = 0
+    self.votes.each { |v| tally += (v.vote ? 1 : -1) }
+    tally
+  end
 end

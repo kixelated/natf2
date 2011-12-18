@@ -35,7 +35,7 @@
       </td>
       <td class="body">
         <div class="post-body">
-          <% nuked = (post.plusminus <= -10) %>
+          <% nuked = (post.plus_minus <= -10) %>
           <span class="<%= nuked ? 'post-nuked' : 'post-content' %>">
             <%= bb(post.body) %>
           </span>
