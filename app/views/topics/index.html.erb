@@ -22,6 +22,7 @@
         <% if %w(categories topics).include?(current_controller) %>
           <th class="tcl tcf"><%=t :forum %></th>
         <% end %>
+        <th class="tcm"><%=t :votes %></th>
         <th class="tcm"><%=t :replies %></th>
         <% unless current_controller == 'home' %>
           <th class="tcm"><%=t :views %></th>
@@ -46,6 +47,9 @@
               <%= link_to h(topic.forum), topic.forum %>
             </td>
           <% end %>
+          <td class="tcm">
+            <%= render 'posts/votes', :target => topic.posts.first %>
+          </td>
           <td class="tcm"><%= number_with_delimiter(topic.replies) %></td>
           <% unless current_controller == 'home' %>
             <td class="tcm"><%= number_with_delimiter(topic.views) %></td>
