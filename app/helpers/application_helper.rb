@@ -44,6 +44,15 @@ module ApplicationHelper
   def avatar_for(user, style = :medium)
     image_tag user.current_avatar.attachment.url(style) unless user.avatar.nil?
   end
+  
+  def steam_icon
+    image_tag("/images/social/steam.png", :class => "steam_icon")
+
+  end
+  
+  def steam_for(user)
+    return "http://steamcommunity.com/profiles/#{user.steamid}"
+  end
 
   def rank_for(user)
     return I18n.t(:rank_administrator) if user.admin
