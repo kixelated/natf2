@@ -25,6 +25,7 @@ module ApplicationHelper
   end
 
   def theme_css
+    return "<style type=\"text/css\">@import url('/stylesheets/#{current_user.stylesheet}.css');</style>" if logged_in?
     return "<style type=\"text/css\">@import url('/stylesheets/application.css');</style>" if @settings.theme.blank?
     return "<style type=\"text/css\">@import url('#{@settings.theme}');</style>"
   end
