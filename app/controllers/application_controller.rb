@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   helper :all
-  #Disabling protect_from_forgery to get steam logons working
- # protect_from_forgery
+  protect_from_forgery
 
   include AuthenticationSystem, ExceptionHandler
 
