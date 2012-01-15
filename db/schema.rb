@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111216214107) do
+ActiveRecord::Schema.define(:version => 20111227235303) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -191,6 +191,7 @@ ActiveRecord::Schema.define(:version => 20111216214107) do
     t.integer  "articles_count",     :default => 0
     t.datetime "all_viewed_at"
     t.string   "steamid"
+    t.string   "stylesheet",         :default => "application"
   end
 
   add_index "users", ["chatting_at"], :name => "index_users_on_chatting_at"
