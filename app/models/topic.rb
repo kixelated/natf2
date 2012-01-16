@@ -29,7 +29,7 @@ class Topic < ActiveRecord::Base
   end
   
   def self.get(page = 1, per_page = 30, conditions = nil)
-    paginate(:page => page, :include => [:user, :forum, :last_poster, :viewings], :per_page => per_page, :conditions => conditions, :order => 'topics.sticky desc, topics.last_post_at desc')    
+    paginate(:page => page, :include => [:user, :forum, :last_poster, :viewings], :per_page => per_page, :conditions => conditions, :order => 'topics.last_post_at desc')    
   end
   
   def viewed_by(user)
