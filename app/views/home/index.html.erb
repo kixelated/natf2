@@ -1,6 +1,11 @@
 <div class="home-left">
   <%= render :partial => 'messages/mini' if enabled?('forum') %>
   <%= render :file => 'topics/index' if enabled?('forum') %>
+  <% if enabled?('forum') %>
+  	<div class="info-right">
+    	<%= will_paginate @topics, :inner_window => 1, :outer_window => 0, :prev_label => '&laquo; '+I18n.t(:prev) %>
+  	</div>
+  <% end %>
 </div>
 
 <div class="home-right">
