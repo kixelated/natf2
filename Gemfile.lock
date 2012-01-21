@@ -125,7 +125,7 @@ GEM
       activesupport (= 3.1.0)
       bundler (~> 1.0)
       railties (= 3.1.0)
-    rails_config (0.2.4)
+    rails_config (0.2.5)
       activesupport (>= 3.0)
     railties (3.1.0)
       actionpack (= 3.1.0)
@@ -187,7 +187,7 @@ DEPENDENCIES
   prototype-rails
   prototype_legacy_helper (= 0.0.0)!
   rails (~> 3.1.0)
-  rails_config (~> 0.2.4)
+  rails_config (~> 0.2.5)
   sass-rails (~> 3.1.0)
   sqlite3
   thumbs_up (~> 0.4.1)

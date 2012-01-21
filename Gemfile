@@ -39,7 +39,7 @@ end
 gem 'heroku'
 
 gem 'will_paginate', '~> 3.0.0'
-gem 'rails_config', '~> 0.2.4'
+gem 'rails_config', '~> 0.2.5'
 gem 'paperclip', '~> 2.4.0'
 gem 'bbcodeizer', '~> 0.2.0'
 gem 'meta_search', '~> 1.1.1'
