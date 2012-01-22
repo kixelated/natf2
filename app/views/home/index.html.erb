@@ -1,5 +1,4 @@
 <div class="home-left">
-  <%= render :partial => 'messages/mini' if enabled?('forum') %>
   <%= render :file => 'topics/index' if enabled?('forum') %>
   <% if enabled?('forum') %>
     <div class="info-right">
@@ -14,6 +13,7 @@
   <%= render :file => 'uploads/index' if enabled?('files') %>
   <%= render :file => 'headers/list' if enabled?('headers') %>
   <%= render :file => 'users/index' if enabled?('users') %>
+  <%= render :partial => 'messages/mini' if enabled?('forum') %>
 </div>
 
 <div class="clear"> </div>
