@@ -1,0 +1,13 @@
+<%= render "shared/error_messages", :target => @category %>
+<%= form_for @category do |f| %>
+  <div class="box" id="box-categories-new">
+    <span class="top"><%=t :new_category %></span>
+
+    <p class="label"><label for="category_name"><%=t :name %></label></p>
+    <p><%= f.text_field :name, :class => 'text-field' %></p>
+    <p>
+      <%= submit_tag I18n.t(:add_category) %>&nbsp;
+      <%= link_to I18n.t(:cancel), uploads_path %>
+    </p>
+</div>
+<% end %>

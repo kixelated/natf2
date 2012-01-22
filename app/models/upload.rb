@@ -2,6 +2,7 @@ class Upload < ActiveRecord::Base
   include PaperclipSupport
 
   belongs_to :user
+  belongs_to :category, :class_name => "UploadCategory"
 
   storage = case
   when Settings.s3_access_id && Settings.s3_secret_key && Settings.s3_bucket_name
@@ -17,6 +18,9 @@ class Upload < ActiveRecord::Base
 
   validates_attachment_presence :attachment
   validates_attachment_size :attachment, :less_than => 100.megabytes
+
+  validates_presence_of :category
+  attr_accessible :category_id
 
   def is_mp3?
     %w(audio/mpeg audio/mpg).include?(attachment_content_type) ? true : false

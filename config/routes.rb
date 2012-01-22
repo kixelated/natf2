@@ -119,6 +119,7 @@ Eldorado::Application.routes.draw do
     end
   end
   resources :uploads
+  resources :upload_categories
   resources :users do
     member do
       post 'admin'

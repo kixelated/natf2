@@ -4,7 +4,7 @@
       <tr>
         <th class="tcl" colspan="2"><%= link_to I18n.t(:files), files_path %></th>
         <% unless current_controller == 'home' %>
-          <th class="tcl"><%=t :type %></th>
+          <th class="tcl"><%=t :category %></th>
           <th class="tcm"><%=t :size %></th>
           <th class="tcr"><%=t :uploaded %></th>
         <% end %>
@@ -15,7 +15,8 @@
         <tr>
           <td class="tci"><%= icon_for(upload) %></td>
           <td class="tcl">
-            <%= link_to truncate(h(upload), :length => 25), upload.attachment.url %>
+            <% length = (current_controller == 'home' ? 25 : 50) %>
+            <%= link_to truncate(h(upload), :length => length), upload.attachment.url %>
             
             <% unless current_controller == 'home' %>
               <%= link_to_function '(&raquo;)'.html_safe, "$('mp3-#{upload.attachment.url}').toggle()" if upload.is_mp3? %>
@@ -37,7 +38,7 @@
             
           </td>
           <% unless current_controller == 'home' %>
-            <td class="tcl"><%= upload.attachment_content_type %></td>
+            <td class="tcl"><%= link_to upload.category || "", :category => upload.category %></td>
             <td class="tcm"><%= number_to_human_size(upload.attachment_file_size) %></td>
             <td class="tcr"><%= time_ago_or_time_stamp(upload.created_at) %></td>
           <% end %>

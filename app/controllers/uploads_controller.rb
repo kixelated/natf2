@@ -9,10 +9,14 @@ class UploadsController < ApplicationController
   rescue_from OpenURI::HTTPError, :with => :url_upload_not_found
   
   def index
-    @uploads = Upload.paginate(:page => params[:page], :order => 'updated_at desc')
+    collection = Upload
+    collection = collection.where(:category_id => params[:category]) if params[:category]
+
+    @uploads = collection.paginate(:page => params[:page], :order => 'updated_at desc', :include => :category)
   end
 
   def new
+    @upload = Upload.new
   end
 
   def create

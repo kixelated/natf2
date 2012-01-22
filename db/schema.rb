@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227235303) do
+ActiveRecord::Schema.define(:version => 20120122013725) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -159,6 +159,10 @@ ActiveRecord::Schema.define(:version => 20111227235303) do
   add_index "topics", ["forum_id", "last_post_at"], :name => "index_topics_on_forum_id_and_last_post_at"
   add_index "topics", ["forum_id", "sticky", "last_post_at"], :name => "index_topics_on_sticky_and_last_post_at"
 
+  create_table "upload_categories", :force => true do |t|
+    t.string "name"
+  end
+
   create_table "uploads", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
@@ -167,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20111227235303) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.string   "attachment_remote_url"
+    t.integer  "category_id"
   end
 
   create_table "users", :force => true do |t|
