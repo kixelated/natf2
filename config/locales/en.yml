@@ -12,7 +12,7 @@ en:
   last_visit: Last Visit
   logout: Logout
   home: Home
-  blog: Blog
+  blog: News
   articles: Articles
   comments: Comments
   chat: Chat
@@ -68,9 +68,9 @@ en:
   post_article: Post Article
   no_articles_found: No Articles Found
   post_a_new_article: Post a New Article
-  blog_archives: Blog Archives
+  blog_archives: News Archives
   looking_for_something: Looking for something?
-  visit_blog_archives: Visit the Blog Archives
+  visit_blog_archives: Visit the News Archives
   post_comment: Post Comment
   to_post_a_comment: to post a comment
   edit_comment: Edit Comment
