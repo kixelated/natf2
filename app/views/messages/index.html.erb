@@ -7,7 +7,7 @@
 <% if logged_in? %>
   <div class="info-left" style="width:100%;">
     <% @message = Message.new unless @message %>
-    <%= form_for @message, :remote => true, :loading => "$('message_body').clear();" do |f| -%>
+    <%= form_for @message, :remote => true, :id => "new_message" do |f| %>
       <%= f.text_field :body, :value => '', :style => "width:70%;" %>&nbsp; 
       <%= submit_tag I18n.t(:submit) %>&nbsp; 
       <%= link_to I18n.t(:upload_a_new_file), new_upload_path, :popup => ['height=530,width=820,status=1'] %>
