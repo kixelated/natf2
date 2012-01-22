@@ -19,7 +19,6 @@ class Upload < ActiveRecord::Base
   validates_attachment_presence :attachment
   validates_attachment_size :attachment, :less_than => 100.megabytes
 
-  validates_presence_of :category
   attr_accessible :category_id
 
   def is_mp3?
