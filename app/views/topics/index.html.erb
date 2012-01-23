@@ -1,3 +1,12 @@
+<%
+  topics = @topics
+
+  if current_controller == 'home'
+    temp = @topics.group_by { |topic| topic.forum }
+    topics = temp.values.flatten(1)
+  end
+%>
+
 <% if current_controller == 'categories' %>
   <div class="info-left">
     <span class="title"><%=h @category %></span>
@@ -14,7 +23,7 @@
 <% end %>
 <div class="clear"> </div>
 
-<% if !@topics.blank? %>
+<% if !topics.blank? %>
   <table cellspacing="0" class="topics-index">
     <thead>
       <tr>
@@ -31,7 +40,16 @@
       </tr>
     </thead>
     <tbody>
-      <% for topic in @topics %>
+      <% last_forum = nil %>
+      <% for topic in topics %>
+        <% if topic.forum != last_forum and current_controller == 'home' %>
+          <tr>
+            <td class="tcl" colspan="5">
+              <span class="forum-name"><%= link_to h(topic.forum), topic.forum %></span>
+            </td>
+          </tr>
+          <% last_forum = topic.forum %>
+        <% end %>
         <tr>
           <td class="tci"><%= icon_for(topic) %></td>
           <td class="tcl">
