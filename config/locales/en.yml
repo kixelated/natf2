@@ -202,6 +202,17 @@ en:
   themes_info: Themes must be smaller than 50k.
   nuked_post: This post is hidden for scoring too low.
   show_nuked_post: Show post.
+  stream: Stream
+  streams: Streams
+  add_a_new_stream: Add a New Stream
+  edit_stream: Edit Stream
+  add_stream: Add Stream
+  channel_identifier: Channel ID
+  viewers: Viewers
+  justintv: TwitchTV
+  own3dtv: own3D.tv
+  status: Status
+
 
   messages:
     delete_category_warning: Deleting a category destroys all of the forums, topics, and posts it contains.

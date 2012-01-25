@@ -299,4 +299,16 @@
   </div>
 <% end %>
 
+<% if current_controller == 'streams' and current_action == 'show' %>
+  <div class="info-left">
+    <%= link_to I18n.t(:home), root_path %> &raquo; 
+    <%= link_to I18n.t(:streams), streams_path %> &raquo; <%=h @stream.title %>
+  </div>
+  <div class="info-right">
+    <% if can_edit?(@stream) %>
+      &nbsp; <%= link_to I18n.t(:edit_stream), edit_stream_path(@stream) %>
+    <% end %>
+  </div>
+<% end %>
+
 <div class="clear"> </div>

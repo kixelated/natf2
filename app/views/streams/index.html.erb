@@ -1,0 +1,45 @@
+<% if current_controller == 'streams' %>
+  <div class="info-left">
+    <span class="title"><%=t :streams %></span>
+    <span class="detail">&nbsp;| &nbsp;<%= pluralize((@streams_count || 0), t(:stream)) %></span>
+  </div>
+  <div class="info-right">
+    <span class="title">&nbsp;</span>
+  </div>
+  <div class="clear"> </div>
+
+  <% if logged_in? %>
+    <%#= render :file => 'users/show', :locals => {:user => current_user } %>
+  <% end %>
+
+<% end %>
+
+<% unless @streams.blank? %>
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <th class="tcl" colspan="2"><%= link_to I18n.t(:streams), streams_path %></th>
+        <th class="tcm"><%=t :viewers %></th>
+        <% unless current_controller == 'home' %>
+          <th class="tcl"><%=t :status %></th>
+          <th class="tcl"><%=t :added_by %></th>
+          <th class="tcr"><%=t :last_updated %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% for stream in @streams %>
+        <tr>
+          <td class="tci"><%= stream_icon_for(stream) %></td>
+          <td class="tcl"><%= link_to h(stream.title), stream %></td>
+          <td class="tcm"><%= stream.viewers %></td>
+          <% unless current_controller == 'home' %>
+            <td class="tcl"><%= stream.status %></td>
+          	<td class="tcl"><%= link_to h(stream.user), stream.user %></td>
+            <td class="tcr"><%= time_ago_or_time_stamp(stream.updated_at) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
