@@ -13,6 +13,7 @@ class StreamsController < ApplicationController
   end
 
   def new
+    @stream = Stream.new
   end
 
   def create

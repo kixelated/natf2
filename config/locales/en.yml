@@ -212,6 +212,9 @@ en:
   add_stream: Add Stream
   channel_identifier: Channel ID
   viewers: Viewers
+  justintv: TwitchTV
+  own3dtv: own3D.tv
+
 
   messages:
     delete_category_warning: Deleting a category destroys all of the forums, topics, and posts it contains.
