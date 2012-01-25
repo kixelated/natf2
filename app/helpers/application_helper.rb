@@ -100,6 +100,14 @@ module ApplicationHelper
     end
   end
 
+  def stream_icon_for(stream)
+    if stream && stream.live?
+      '<div class="icon inew"><!-- --></div>'.html_safe
+    else
+      '<div class="icon"><!-- --></div>'.html_safe
+    end
+  end
+
   def bb(text, *disable)
     text = BBCodeizer.bbcodeize(simple_format(h(text)), :disabled => disable)
     text.html_safe
@@ -144,5 +152,10 @@ module ApplicationHelper
 
   def time_stamp(time, short = false)
     I18n.l(time, :format => ( short ? :ed_timestamp_short : :ed_timestamp ) )
+  end
+
+  def stream_embed(stream)
+
+
   end
 end

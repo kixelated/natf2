@@ -99,6 +99,7 @@ Eldorado::Application.routes.draw do
   end
   resources :ranks
   resources :settings
+  resources :streams
   resources :subscriptions do
     collection do
       post 'toggle'

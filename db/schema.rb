@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120122013725) do
+ActiveRecord::Schema.define(:version => 20120124230832) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -125,6 +125,17 @@ ActiveRecord::Schema.define(:version => 20120122013725) do
     t.string  "login_message"
     t.string  "admin_only_create", :default => "",    :null => false
     t.boolean "clickable_header",  :default => false
+  end
+
+  create_table "streams", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "identifier"
+    t.string   "title"
+    t.integer  "viewers"
+    t.boolean  "live",       :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subscriptions", :force => true do |t|
