@@ -1,0 +1,27 @@
+<%= render "shared/error_messages", :target => @stream %>
+<%= form_for @stream do |f| -%>
+  <div class="box" id="box-streams-edit">
+    <span class="top"><%=t :edit_stream %></span>
+    <p class="label">
+      <label for="stream_title"><%=t :title %></label>
+    </p>
+    <p><%= f.text_field :title, :style => "width:31%" %></p>
+    <p class="label">
+      <label for="stream_provider"><%=t :stream_provider %></label>
+    </p>
+    <p><%= f.select "provider", Stream::PROVIDERS %></p>
+    <p class="label">
+      <label for="channel_identifier"><%=t :channel_identifier %></label>
+    </p>
+    <p><%= f.text_field :identifier, :style => "width:31%" %></p>
+    <p class="label">
+      <label for="stream_description"><%=t :description %> (<%=t :optional %>)</label>
+    </p>
+    <p><%= f.text_area :description, :rows => '4', :class => 'text-field' %></p>
+    <p>
+      <%= submit_tag I18n.t(:save_changes), :disable_with => I18n.t(:save_changes) %>&nbsp; 
+      <%= link_to I18n.t(:delete), @stream, :confirm => I18n.t(:are_you_sure), :method => :delete %> &nbsp;
+      <%= link_to I18n.t(:cancel), @stream %>
+    </p>
+  </div>
+<% end %>

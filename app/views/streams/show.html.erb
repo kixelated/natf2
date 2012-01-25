@@ -1,0 +1,22 @@
+<div class="box" id="box-users-show">
+  <span class="top"><%=t :stream %></span>
+  <div style="margin-top:10px;">
+    <span class="profile-title"><%=h @stream.title %></span>&nbsp;
+  </div>
+  <div class="profile-bio">
+    <p><%=h @stream.status %></p>
+  </div>
+
+  <p style="margin-top:20px">
+  <% if @stream.provider == "justintv" %>
+    <%= justintv_embed(@stream) %>
+  <% elsif @stream.provider == "own3dtv" %>
+  	<%= own3dtv_embed(@stream) %>
+  <% end %>
+  </p>
+  <div class="clear"> </div>  
+
+  <% if !@stream.description.blank? %>
+    <blockquote><%=h @stream.description %></blockquote>
+  <% end %>
+</div>

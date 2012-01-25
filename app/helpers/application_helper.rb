@@ -48,7 +48,6 @@ module ApplicationHelper
   
   def steam_icon
     image_tag("/images/social/steam.png", :class => "steam_icon")
-
   end
   
   def steam_for(user)
@@ -100,6 +99,14 @@ module ApplicationHelper
     end
   end
 
+  def stream_icon_for(stream)
+    if stream && stream.live?
+      '<div class="icon inew"><!-- --></div>'.html_safe
+    else
+      '<div class="icon"><!-- --></div>'.html_safe
+    end
+  end
+
   def bb(text, *disable)
     text = BBCodeizer.bbcodeize(simple_format(h(text)), :disabled => disable)
     text.html_safe
@@ -144,5 +151,25 @@ module ApplicationHelper
 
   def time_stamp(time, short = false)
     I18n.l(time, :format => ( short ? :ed_timestamp_short : :ed_timestamp ) )
+  end
+
+  def justintv_embed(stream)
+    '<object type="application/x-shockwave-flash" height="528" width="938" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=<%= stream.identifier %>" bgcolor="#000000" id="live_embed_player_flash" class="videoplayer">
+      <param name="allowFullScreen" value="true" />
+      <param name="allowScriptAccess" value="always" />
+      <param name="allowNetworking" value="all" />
+      <param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" />
+      <param name="flashvars" value="hostname=www.twitch.tv&channel=<%= stream.identifier %>&auto_play=true&start_volume=50" />
+    </object>'.html_safe
+  end
+
+  def own3dtv_embed(stream)
+    '<object width="938" height="528">
+      <param name="movie" value="http://www.own3d.tv/livestream/<%= stream.identifier %>;autoplay=true" />
+      <param name="allowscriptaccess" value="always" />
+      <param name="allowfullscreen" value="true" />
+      <param name="wmode" value="transparent" />
+      <embed src="http://www.own3d.tv/livestream/<%= stream.identifier %>;autoplay=true" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="938" height="528" wmode="transparent"></embed>
+    </object>'.html_safe
   end
 end
