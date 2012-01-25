@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120124230832) do
+ActiveRecord::Schema.define(:version => 20120125224421) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -133,9 +133,11 @@ ActiveRecord::Schema.define(:version => 20120124230832) do
     t.string   "identifier"
     t.string   "title"
     t.integer  "viewers"
-    t.boolean  "live",       :default => false
+    t.boolean  "live",        :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.string   "status"
   end
 
   create_table "subscriptions", :force => true do |t|

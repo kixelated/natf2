@@ -1,6 +1,6 @@
 class Stream < ActiveRecord::Base
   
-  attr_accessible :title, :provider, :identifier, :viewers, :live
+  attr_accessible :title, :provider, :identifier, :viewers, :live, :description, :status
   belongs_to :user
   validates_presence_of :title, :provider, :identifier
   
@@ -12,7 +12,8 @@ class Stream < ActiveRecord::Base
     if self.provider == "justintv"
       response = HTTParty.get("http://api.justin.tv/api/stream/list.xml?channel=#{identifier}")
       current_viewers = response["streams"]["stream"]["channel_count"] rescue nil
-      self.update_attributes(:viewers => current_viewers, :live => !!current_viewers)
+      current_title = response["streams"]["stream"]["title"] rescue nil
+      self.update_attributes(:viewers => current_viewers, :live => !!current_viewers, :status => current_title)
     elsif self.provider == "own3dtv"
       response = HTTParty.get("http://api.own3d.tv/liveCheck.php?live_id=#{identifier}")
       current_viewers = response["own3dReply"]["liveEvent"]["liveViewers"] rescue nil

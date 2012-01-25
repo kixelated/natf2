@@ -1,7 +1,7 @@
 <% if current_controller == 'streams' %>
   <div class="info-left">
     <span class="title"><%=t :streams %></span>
-    <span class="detail">&nbsp;| &nbsp;<%=t_no_of :no_of_streams, (@streams_count || 0) %></span>
+    <span class="detail">&nbsp;| &nbsp;<%= pluralize((@streams_count || 0), t(:stream)) %></span>
   </div>
   <div class="info-right">
     <span class="title">&nbsp;</span>
@@ -21,6 +21,7 @@
         <th class="tcl" colspan="2"><%= link_to I18n.t(:streams), streams_path %></th>
         <th class="tcm"><%=t :viewers %></th>
         <% unless current_controller == 'home' %>
+          <th class="tcl"><%=t :status %></th>
           <th class="tcl"><%=t :added_by %></th>
           <th class="tcr"><%=t :last_updated %></th>
         <% end %>
@@ -33,6 +34,7 @@
           <td class="tcl"><%= link_to h(stream.title), stream %></td>
           <td class="tcm"><%= stream.viewers %></td>
           <% unless current_controller == 'home' %>
+            <td class="tcl"><%= stream.status %></td>
           	<td class="tcl"><%= link_to h(stream.user), stream.user %></td>
             <td class="tcr"><%= time_ago_or_time_stamp(stream.updated_at) %></td>
           <% end %>

@@ -1,4 +1,3 @@
-<% @stream = Stream.new unless @stream %>
 <%= render "shared/error_messages", :target => @stream %>
 <%= form_for @stream do |f| %>
   <div class="box" id="box-streams-new">
@@ -8,13 +7,17 @@
     </p>
     <p><%= f.text_field :title, :style => "width:31%", :class => 'text-field' %></p>
     <p class="label">
-      <label for="stream_provider"><%=t :stream_provider %></label
+      <label for="stream_provider"><%=t :stream_provider %></label>
     </p>
     <p><%= f.select "provider", Stream::PROVIDERS %></p>
     <p class="label">
       <label for="channel_identifier"><%=t :channel_identifier %></label>
     </p>
     <p><%= f.text_field :identifier, :style => "width:31%" %></p>
+    <p class="label">
+      <label for="stream_description"><%=t :description %> (<%=t :optional %>)</label>
+    </p>
+    <p><%= f.text_area :description, :rows => '4', :class => 'text-field' %></p>
     <p>
       <%= submit_tag I18n.t(:add_stream), :disable_with => I18n.t(:add_stream) %>&nbsp;
       <%= link_to I18n.t(:cancel), streams_path %>
