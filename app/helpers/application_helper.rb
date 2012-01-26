@@ -154,22 +154,22 @@ module ApplicationHelper
   end
 
   def justintv_embed(stream)
-    return "<object type=\"application/x-shockwave-flash\" height=\"528\" width=\"938\" data=\"http://www.twitch.tv/widgets/live_embed_player.swf?channel=#{stream.identifier}\" bgcolor=\"#000000\" id=\"live_embed_player_flash\" class=\"videoplayer\">
-      <param name=\"allowFullScreen\" value=\"true\" />
-      <param name=\"allowScriptAccess\" value=\"always\" />
-      <param name=\"allowNetworking\" value=\"all\" />
-      <param name=\"movie\" value=\"http://www.twitch.tv/widgets/live_embed_player.swf\" />
-      <param name=\"flashvars\" value=\"hostname=www.twitch.tv&channel=#{stream.identifier}&auto_play=true&start_volume=50\" />
-    </object>".html_safe
+    %Q{<object type="application/x-shockwave-flash" height="528" width="938" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=#{stream.identifier}" bgcolor="#000000" id="live_embed_player_flash" class="videoplayer">
+      <param name="allowFullScreen" value="true" />
+      <param name="allowScriptAccess" value="always" />
+      <param name="allowNetworking" value="all" />
+      <param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" />
+      <param name="flashvars" value="hostname=www.twitch.tv&channel=#{stream.identifier}&auto_play=true&start_volume=50" />
+    </object>}.html_safe
   end
 
   def own3dtv_embed(stream)
-    return "<object width=\"938\" height=\"528\">
-      <param name=\"movie\" value=\"http://www.own3d.tv/livestream/#{stream.identifier};autoplay=true\" />
-      <param name=\"allowscriptaccess\" value=\"always\" />
-      <param name=\"allowfullscreen\" value=\"true\" />
-      <param name=\"wmode\" value=\"transparent\" />
-      <embed src=\"http://www.own3d.tv/livestream/#{stream.identifier};autoplay=true\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" allowscriptaccess=\"always\" width=\"938\" height=\"528\" wmode=\"transparent\"></embed>
-    </object>".html_safe
+    %Q{<object width="938" height="528">
+      <param name="movie" value="http://www.own3d.tv/livestream/<%= stream.identifier %>;autoplay=true" />
+      <param name="allowscriptaccess" value="always" />
+      <param name="allowfullscreen" value="true" />
+      <param name="wmode" value="transparent" />
+      <embed src="http://www.own3d.tv/livestream/<%= stream.identifier %>;autoplay=true" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="938" height="528" wmode="transparent"></embed>
+    </object>}.html_safe
   end
 end
