@@ -165,11 +165,11 @@ module ApplicationHelper
 
   def own3dtv_embed(stream)
     %Q{<object width="938" height="528">
-      <param name="movie" value="http://www.own3d.tv/livestream/<%= stream.identifier %>;autoplay=true" />
+      <param name="movie" value="http://www.own3d.tv/livestream/#{ stream.identifier };autoplay=true" />
       <param name="allowscriptaccess" value="always" />
       <param name="allowfullscreen" value="true" />
       <param name="wmode" value="transparent" />
-      <embed src="http://www.own3d.tv/livestream/<%= stream.identifier %>;autoplay=true" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="938" height="528" wmode="transparent"></embed>
+      <embed src="http://www.own3d.tv/livestream/#{ stream.identifier };autoplay=true" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="938" height="528" wmode="transparent"></embed>
     </object>}.html_safe
   end
 end
