@@ -4,7 +4,7 @@ class StreamsController < ApplicationController
   before_filter :can_edit, :only => [:edit, :update, :destroy]
   
   def index
-    @streams = Stream.paginate(:page => params[:page], :order => 'live desc, viewers desc')
+    @streams = Stream.paginate(:page => params[:page], :order => 'live desc, viewers desc, updated_at desc')
     @streams_count = Stream.count
   end
 

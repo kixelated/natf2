@@ -154,7 +154,7 @@ module ApplicationHelper
   end
 
   def justintv_embed(stream)
-    %Q{<object type="application/x-shockwave-flash" height="528" width="938" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=#{stream.identifier}" bgcolor="#000000" id="live_embed_player_flash" class="videoplayer">
+    %Q{<object type="application/x-shockwave-flash" height="423" width="700" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=#{stream.identifier}" bgcolor="#000000" id="live_embed_player_flash" class="videoplayer">
       <param name="allowFullScreen" value="true" />
       <param name="allowScriptAccess" value="always" />
       <param name="allowNetworking" value="all" />
@@ -171,5 +171,9 @@ module ApplicationHelper
       <param name="wmode" value="transparent" />
       <embed src="http://www.own3d.tv/livestream/#{ stream.identifier };autoplay=true" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="938" height="528" wmode="transparent"></embed>
     </object>}.html_safe
+  end
+
+  def justintv_chat_embed(stream)
+    %Q{<iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=#{stream.identifier}&amp;popout_chat=true" height="423" width="234"></iframe>}.html_safe
   end
 end

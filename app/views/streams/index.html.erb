@@ -34,7 +34,7 @@
           <td class="tcl"><%= link_to h(stream.title), stream %></td>
           <td class="tcm"><%= stream.viewers %></td>
           <% unless current_controller == 'home' %>
-            <td class="tcl"><%= stream.status %></td>
+            <td class="tcl"><%= truncate(stream.status, :length => 75) %></td>
           	<td class="tcl"><%= link_to h(stream.user), stream.user %></td>
             <td class="tcr"><%= time_ago_or_time_stamp(stream.updated_at) %></td>
           <% end %>

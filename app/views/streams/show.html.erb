@@ -10,6 +10,7 @@
   <p style="margin-top:20px">
   <% if @stream.provider == "justintv" %>
     <%= justintv_embed(@stream) %>
+    <%= justintv_chat_embed(@stream) %>
   <% elsif @stream.provider == "own3dtv" %>
   	<%= own3dtv_embed(@stream) %>
   <% end %>
