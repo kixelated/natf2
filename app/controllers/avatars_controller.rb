@@ -39,7 +39,7 @@ class AvatarsController < ApplicationController
   end
     
   def deselect
-    @avatar = Avatar.find(params[:id])
+    @avatar = Avatar.find_by_current_user_id(params[:id])
     if @avatar.current_avatar_user == current_user
       current_user.clear_avatar
       flash[:notice] = "Avatar cleared"
