@@ -74,7 +74,7 @@ Eldorado::Application.routes.draw do
   resources :events
   resources :forums do
     member do
-      post 'confirm_delete'
+      get 'confirm_delete'
     end
   end
   resources :headers do

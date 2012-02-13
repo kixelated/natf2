@@ -1,5 +1,5 @@
 <%= render "shared/error_messages", :target => @user %>
-<% form_tag user_path(@user), :method => :delete do %>
+<%= form_tag user_path(@user), :method => :delete do -%>
   <div class="box" id="box-users-confirmation">
     <span class="top"><%=t :delete_user %></span>
       <p><%=t :delete_user_warning, :scope => :messages %></p>
