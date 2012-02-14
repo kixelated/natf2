@@ -62,7 +62,7 @@ Eldorado::Application.routes.draw do
   resources :avatars do
     member do
       post 'select'
-      get 'deselect'
+      post 'deselect'
     end
   end
   resources :categories do
