@@ -35,12 +35,11 @@ class User < ActiveRecord::Base
   acts_as_voter
   has_karma(:posts, :as => :user)
 
-  validates_presence_of     :login, :email, :password_hash
+  validates_presence_of     :login, :email, :steamid
   validates_uniqueness_of   :login, :case_sensitive => false
-  validates_uniqueness_of   :steamid, :allow_blank => true, :allow_nil => true
+  validates_uniqueness_of   :steamid
   validates_length_of       :login, :maximum => 25
   validates_format_of       :email, :on => :create, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
-  validates_confirmation_of :password, :on => :create
   validates_confirmation_of :password, :on => :update, :allow_blank => true
 
   before_create :set_defaults
@@ -91,6 +90,10 @@ class User < ActiveRecord::Base
 
   def self.authenticate(login, password)
     find_by_login_and_password_hash(login, encrypt(password))
+  end
+
+  def self.steam_authenticate(steamid)
+    find_by_steamid(steamid)
   end
 
   def self.encrypt(password)

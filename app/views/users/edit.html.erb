@@ -13,11 +13,7 @@
     </p>
     <p class ="label"><label for="user_username">SteamID (You may NOT change this once you add it!)</label></p>
     <p>
-      <% if @user.steamid.blank? %>
-        <a href="/auth/steam/"><img src="http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_small.png"></a> 
-        <br>
-        
-      <% else %>
+      <% if @user.steamid.present? %>
         <a href="http://steamcommunity.com/profiles/<%= @user.steamid %>" target="_blank">
         <img src="http://badges.steamstatus.com/profile/default/steam/<%= @user.steamid %>.png" border="0" alt="Steamprofile badge by Steamprofile.com">
         </a>
