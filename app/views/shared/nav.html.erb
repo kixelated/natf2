@@ -40,8 +40,7 @@
     <% end %>
     <% if !logged_in? && !locked_out? %>
       &nbsp; <%= link_to I18n.t(:search), search_path(:type => current_controller) %> &nbsp; 
-      <%= link_to I18n.t(:register), register_path %> &nbsp;
-      <%= link_to I18n.t(:login), login_path %> 
+      <%= link_to steam_signin, "/auth/steam/" %>
     <% end %>
   </p>
 </div>

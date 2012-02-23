@@ -3,6 +3,9 @@
 <%= form_for @user, :url => login_path do |f| %>
   <div class="box" id="box-users-login">
     <span class="top"><%=t :login %></span>
+    <p class="help">Please enter your username and password.<br /><br />
+      This will link your Steam account to your NATF2 account.
+    </p>
     <p class="label"><label for="user_login"><%=t :username %></label></p>
     <p><%= f.text_field :login, :style => "width:30%" %></p>
     <p class="label"><label for="user_password"><%=t :password %></label></p>

@@ -135,9 +135,9 @@ Eldorado::Application.routes.draw do
   match 'search' => 'search#index'
   match 'refresh_chatters' => 'messages#refresh_chatters'
 
-  match 'login' => 'users#login'
   match 'logout' => 'users#logout'
-  match 'register' => 'users#new'
+  match 'login' => 'users#login'
+ # match 'register' => 'users#new'
 
   match 'admin' => 'settings#index'
   match 'blog' => 'articles#index'
@@ -147,6 +147,6 @@ Eldorado::Application.routes.draw do
   match 'forum' => 'forums#index'
   match 'help' => 'home#help'
   
-  match '/auth/:provider/callback', to: 'omni#steam_login'
-  match '/auth/failure', to: 'omni#steam_login_failure'
+  match '/auth/:provider/callback', to: 'users#steam_login'
+  match '/auth/failure', to: 'users#steam_login_failure'
 end
