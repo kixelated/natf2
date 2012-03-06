@@ -49,6 +49,10 @@ module ApplicationHelper
   def steam_icon
     image_tag("/images/social/steam.png", :class => "steam_icon")
   end
+
+  def steam_signin
+    image_tag("/images/social/sits_smallest.png", :class => "steam_signin")
+  end
   
   def steam_for(user)
     return "http://steamcommunity.com/profiles/#{user.steamid}"

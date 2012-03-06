@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :can_edit, :only => [:edit, :update, :destroy, :confirm_delete]
   before_filter :require_admin, :only => [:admin, :ban, :remove_ban]
   skip_filter :check_privacy, :only => [:login, :logout]
+  skip_before_filter :verify_authenticity_token, :only => :steam_login
   
   def index
     @users = User.paginate(:page => params[:page], :order => 'profile_updated_at desc')
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.steamid = session[:steam_id]
     render :action => :new and return false unless @user.save
     if logged_in?
       redirect_to users_path and return true
@@ -77,6 +79,7 @@ class UsersController < ApplicationController
     if request.post?
       @user = User.authenticate(params[:user][:login], params[:user][:password]) unless params[:user].blank?
       if @user
+        @user.update_attribute(:steamid, session[:steam_id])
         do_login(@user)
       else
         flash[:notice] = I18n.t(:invalid_user_password_combo)
@@ -93,12 +96,33 @@ class UsersController < ApplicationController
       @user.logged_out = true
       @user.auth_token = nil
       @user.auth_token_exp = nil
-      @user.save!
+      @user.save
     end
     cookies.delete :auth_token
     reset_session
     flash[:notice] = @flash
-    redirect_to login_path
+    redirect_to root_path
+  end
+
+  def steam_login
+    redirect_to root_path and return false if logged_in?
+    if auth_hash.uid.present?
+      @user = User.steam_authenticate(auth_hash.uid)
+      if @user
+        do_login(@user)
+      else
+        session[:steam_id] = auth_hash.uid
+        render :action => :new
+      end
+    else
+      flash[:notice] = I18n.t(:invalid_user_password_combo)
+      redirect_to root_path and return false
+    end
+  end
+  
+  def steam_login_failure
+    redirect_to root_path
+    flash[:notice] = "Could not log you in. #{params[:message]}"
   end
     
   protected
@@ -114,5 +138,9 @@ class UsersController < ApplicationController
     cookies[:auth_token] = { :value => user.auth_token, :expires => user.auth_token_exp }
     user.save!
     redirect_to root_path
+  end
+
+  def auth_hash
+    request.env['omniauth.auth']
   end
 end

@@ -150,6 +150,9 @@ thead .tcm,.avatar-list,.avatar-show,.center{text-align:center;}
 .pagination,.fieldWithErrors{display:inline;}
 .calendar_date_select td:hover,.calendar_date_select td.selected{background-color:#D1D1D1;}
 .steam_icon { margin-bottom: -3px; }
+.steam_signin { margin-bottom: -6px; margin-top: -6px; }
+.help{border:1px solid #999;background:#eee;margin-top:10px;margin-bottom:10px;}
+.help{width:36%;background-color:#FBFBB1;text-align:center;padding:5px 0;}
 
 /*
 github.com style (c) Vasily Polovnyov <vast@whiteants.net>
