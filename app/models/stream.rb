@@ -22,6 +22,7 @@ class Stream < ActiveRecord::Base
       rescue Exception => e
         logger.error e
       ensure
+        logger.info "#{ title }: #{ current_viewers }"
         self.update_attributes(:viewers => current_viewers, :live => !!current_viewers, :status => current_status)
       end
     elsif self.provider == "own3dtv"
@@ -33,6 +34,7 @@ class Stream < ActiveRecord::Base
       rescue Exception => e
         logger.error e
       ensure
+        logger.info "#{ title }: #{ current_viewers }"
         self.update_attributes(:viewers => current_viewers, :live => is_live)
       end
     end
