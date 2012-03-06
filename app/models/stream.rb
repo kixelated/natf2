@@ -18,7 +18,7 @@ class Stream < ActiveRecord::Base
         current_viewers = response["streams"]["stream"]["channel_count"]
         current_status = response["streams"]["stream"]["channel"]["status"]
       rescue Exception => e
-        puts e
+        logger.error e
       ensure
         self.update_attributes(:viewers => current_viewers, :live => !!current_viewers, :status => current_status)
       end
@@ -28,13 +28,11 @@ class Stream < ActiveRecord::Base
         current_viewers = response["own3dReply"]["liveEvent"]["liveViewers"]
         is_live = response["own3dReply"]["liveEvent"]["isLive"]
       rescue Exception => e
-        puts e
+        logger.error e
       ensure
         self.update_attributes(:viewers => current_viewers, :live => is_live)
       end
     end
-    rescue Exception => e
-    puts e
   end
 
 end
