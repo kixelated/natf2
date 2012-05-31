@@ -1,0 +1,48 @@
+<% if current_controller == 'tfservers' %>
+  <div class="info-left">
+    <span class="title"><%=t :tfservers %></span>
+    <span class="detail">&nbsp;| &nbsp;<%= pluralize((@tfservers_count || 0), t(:tfserver)) %></span>
+  </div>
+  <div class="info-right">
+    <span class="title">&nbsp;</span>
+  </div>
+  <div class="clear"> </div>
+
+  <% if logged_in? %>
+    <%#= render :file => 'users/show', :locals => {:user => current_user } %>
+  <% end %>
+
+<% end %>
+
+<% unless @tfservers.blank? %>
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <th class="tcl"><%= link_to I18n.t(:tfservers), tfservers_path %></th>
+        <th class="tcm"><%=t :players %></th>
+        <% unless current_controller == 'home' %>
+          <th class="tcl"><%=t :ip %></th>
+          <th class="tcl"><%=t :map %></th>
+          <th class="tcr"><%=t :last_updated %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% for tfserver in @tfservers %>
+        <tr>
+          <td class="tcl"><%= link_to h(tfserver.title), tfserver %><% if current_controller == 'home' %> <%= server_connect_link(tfserver) %><% end %></td>
+          <td class="tcm"><%= tfserver.players %> / <%= tfserver.max_players %></td>
+          <% unless current_controller == 'home' %>
+            <td class="tcl"><%= tfserver.ip %>:<%= tfserver.port %> <%= server_connect_link(tfserver) %></td>
+          	<td class="tcl"><%= tfserver.map %>
+			<% if !tfserver.gametype.blank? %>
+				(<%=h tfserver.gametype %>)
+			<% end %>
+			</td>
+            <td class="tcr"><%= time_ago_or_time_stamp(tfserver.updated_at) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

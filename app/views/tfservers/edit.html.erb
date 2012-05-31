@@ -1,0 +1,24 @@
+<%= render "shared/error_messages", :target => @tfserver %>
+<%= form_for @tfserver do |f| -%>
+  <div class="box" id="box-tfservers-edit">
+    <span class="top"><%=t :edit_tfserver %></span>
+    <p class="label">
+      <label for="tfserver_title"><%=t :title %></label>
+    </p>
+    <p><%= f.text_field :title, :style => "width:31%" %></p>
+    <p class="label">
+      <label for="tfserver_ip">IP</label>
+    </p>
+    <p><%= f.text_field :ip, :style => "width:31%" %></p>
+    <p class="label">
+      <label for="tfserver_port"><%=t :port %></label>
+    </p>
+    <p><%= f.text_field :port, :style => "width:31%" %></p>
+    
+	<p>
+      <%= submit_tag I18n.t(:save_changes), :disable_with => I18n.t(:save_changes) %>&nbsp; 
+      <%= link_to I18n.t(:delete), @tfserver, :confirm => I18n.t(:are_you_sure), :method => :delete %> &nbsp;
+      <%= link_to I18n.t(:cancel), @tfserver %>
+    </p>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+<div class="box" id="box-users-show">
+  <span class="top"><%=t :tfserver %> <%= server_connect_link(@tfserver) %></span>
+  <div style="margin-top:10px;">
+    <span class="profile-title"><%=h @tfserver.servertitle %> (<%=h @tfserver.title %>)</span>
+  </div>
+
+  <p style="margin-top:20px">
+  	Map: <%= @tfserver.map %>  	
+	<% if !@tfserver.gametype.blank? %>
+		(<%=h @tfserver.gametype %>)
+	<% end %>
+	<br /><br />
+  	Players: <%=h @tfserver.players %> / <%=h @tfserver.max_players %><br />
+	<% unless @tfserver.players_list.blank? %>
+		<% for player in @tfserver.players_list.split("%") %>
+			<%= player %> <br />
+		<% end %>
+	<% end %>
+  </p>
+  <div class="clear"> </div>  
+
+</div>
