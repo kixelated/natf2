@@ -212,6 +212,12 @@ en:
   justintv: TwitchTV
   own3dtv: own3D.tv
   status: Status
+  tfserver: Server
+  tfservers: Servers
+  add_a_new_tfserver: Add a New Server
+  edit_tfserver: Edit Server
+  add_tfserver: Add Server
+  ip: IP
 
 
   messages:
@@ -252,7 +258,7 @@ en:
     month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
     abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
     # Used in date_select and datime_select.
-    order: [ :year, :month, :day ]
+    order: [ year, month, day ]
 
   time:
     formats:

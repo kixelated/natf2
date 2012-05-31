@@ -180,4 +180,7 @@ module ApplicationHelper
   def justintv_chat_embed(stream)
     %Q{<iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=#{stream.identifier}&amp;popout_chat=true" height="423" width="234"></iframe>}.html_safe
   end
+  def server_connect_link(tfserver)
+    %Q{<a href="steam://connect/#{tfserver.ip}:#{tfserver.port}">(Connect)</a>}.html_safe
+  end
 end

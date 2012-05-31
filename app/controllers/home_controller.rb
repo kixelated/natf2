@@ -12,6 +12,7 @@ class HomeController < ApplicationController
     @uploads = Upload.find(:all, :limit => 3, :include => :user, :order => 'uploads.updated_at desc')
     @users = User.find(:all, :limit => 3, :order => 'profile_updated_at desc')
     @streams = Stream.find(:all, :order => 'viewers desc', :conditions => {:live => true})
+    @tfservers = Tfserver.find(:all, :order => 'players desc', :conditions => ["players > 0"])
   end
 
   def help
