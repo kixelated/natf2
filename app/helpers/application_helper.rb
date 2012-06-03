@@ -31,7 +31,7 @@ module ApplicationHelper
   end
 
   def page_title
-    item = [@article, @category, @event, @forum, @header, @message, @topic, @user].compact.first if %w(show edit).include?(current_action)
+    item = [@article, @category, @event, @forum, @header, @message, @topic, @user, @tf2_server, @stream].compact.first if %w(show edit).include?(current_action)
     page = request.env['PATH_INFO'].delete('/').sub('new','').capitalize unless request.env['PATH_INFO'].nil?
     page = @settings.tagline if current_controller == 'home'
     "#{@settings.title}: #{item || page}"

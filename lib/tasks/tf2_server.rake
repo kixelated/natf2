@@ -1,8 +1,8 @@
-namespace :tfserver do
+namespace :tf2_server do
   desc "Updates the current status for all of the servers"
   task :update => :environment do
-    Tfserver.all.each do |tfserver|
-      Delayed::Job.enqueue(tfserver)
+    Tf2Server.all.each do |tf2_server|
+      Delayed::Job.enqueue(tf2_server)
     end
   end
 end

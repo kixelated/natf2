@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :uploads, :dependent => :destroy, :order => 'created_at desc'
   has_one :current_avatar, :class_name => 'Avatar', :foreign_key => 'current_user_id', :dependent => :nullify
   has_many :streams, :dependent => :destroy, :order => 'created_at desc'
-  has_many :tfservers, :dependent => :destroy, :order => 'created_at desc'
+  has_many :tf2_servers, :dependent => :destroy, :order => 'created_at desc'
 
   has_many :subscriptions, :dependent => :destroy do
     def toggle(topic_id)

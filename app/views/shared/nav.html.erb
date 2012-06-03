@@ -27,7 +27,7 @@
         <% elsif current_controller == 'uploads' %><%= link_to I18n.t(:upload_a_new_file), new_upload_path %>
         <% elsif current_controller == 'users' %><%= link_to I18n.t(:register_a_new_user), new_user_path %>
         <% elsif current_controller == 'streams' %><%= link_to I18n.t(:add_a_new_stream), new_stream_path %>
-        <% elsif current_controller == 'tfservers' %><%= link_to I18n.t(:add_a_new_tfserver), new_tfserver_path %>
+        <% elsif current_controller == 'tf2_servers' %><%= link_to I18n.t(:add_a_new_tf2_server), new_tf2_server_path %>
         <% end %>
       <% end %>
       &nbsp; <%= link_to I18n.t(:search), search_path(:type => current_controller) %>

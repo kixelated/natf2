@@ -1,6 +1,6 @@
-class Tfserver < ActiveRecord::Base
+class Tf2Server < ActiveRecord::Base
 
-	attr_accessible :title, :servertitle, :ip, :port, :gametype, :players, :players_list, :max_players, :map
+	attr_accessible :title, :ip, :port, :gametype, :players, :players_list, :max_players, :map
 	belongs_to :user
 	validates_presence_of :title, :ip
 
@@ -12,7 +12,7 @@ class Tfserver < ActiveRecord::Base
 			new_players = server.players.length
 			new_maxplayers = serverinfo["max_players"]
 			new_map = serverinfo["map_name"]
-			new_servertitle = serverinfo["server_name"]
+			new_title = serverinfo["server_name"]
 			
 			playersList = ""
 			for player in server.players.keys
@@ -31,8 +31,11 @@ class Tfserver < ActiveRecord::Base
 			logger.error e
 		ensure
 			logger.info "#{ title }: #{ new_players }"
-			self.update_attributes(:players => new_players, :max_players => new_maxplayers, :map => new_map, :servertitle => new_servertitle, :players_list => playersList, :gametype => new_type)
+			self.update_attributes(:players => new_players, :max_players => new_maxplayers, :map => new_map, :title => new_title, :players_list => playersList, :gametype => new_type)
 		end
+	end
+	def to_s
+		return title
 	end
 end
 

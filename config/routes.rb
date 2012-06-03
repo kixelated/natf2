@@ -100,7 +100,7 @@ Eldorado::Application.routes.draw do
   resources :ranks
   resources :settings
   resources :streams
-  resources :tfservers
+  resources :tf2_servers
   resources :subscriptions do
     collection do
       post 'toggle'

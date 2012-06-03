@@ -1,9 +1,9 @@
-<%= render "shared/error_messages", :target => @tfserver %>
-<%= form_for @tfserver do |f| %>
-  <div class="box" id="box-tfservers-new">
-    <span class="top"><%=t :new_tfserver %></span>
+<%= render "shared/error_messages", :target => @tf2_server %>
+<%= form_for @tf2_server do |f| %>
+  <div class="box" id="box-tf2_servers-new">
+    <span class="top"><%=t :new_tf2_server %></span>
     <p class="label">
-      <label for="tfserver_title"><%=t :title %></label>
+      <label for="tf2_server_title"><%=t :title %></label>
     </p>
     <p><%= f.text_field :title, :style => "width:31%", :class => 'text-field' %></p>
     <p class="label">
@@ -15,8 +15,8 @@
     </p>
     <p><%= f.text_field :port, :style => "width:31%", :class => 'text-field' %></p>
     <p>
-      <%= submit_tag I18n.t(:add_tfserver), :disable_with => I18n.t(:add_tfserver) %>&nbsp;
-      <%= link_to I18n.t(:cancel), tfservers_path %>
+      <%= submit_tag I18n.t(:add_tf2_server), :disable_with => I18n.t(:add_tf2_server) %>&nbsp;
+      <%= link_to I18n.t(:cancel), tf2_servers_path %>
     </p>
   </div>
 <% end %>

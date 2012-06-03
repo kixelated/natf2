@@ -161,10 +161,9 @@ ActiveRecord::Schema.define(:version => 20120531043037) do
     t.integer "topic_id"
   end
 
-  create_table "tfservers", :force => true do |t|
+  create_table "tf2_servers", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.string   "servertitle"
     t.string   "ip"
     t.string   "gametype"
     t.integer  "players"

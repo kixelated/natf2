@@ -310,14 +310,14 @@
     <% end %>
   </div>
 <% end %>
-<% if current_controller == 'tfservers' and current_action == 'show' %>
+<% if current_controller == 'tf2_servers' and current_action == 'show' %>
   <div class="info-left">
     <%= link_to I18n.t(:home), root_path %> &raquo; 
-    <%= link_to I18n.t(:tfservers), tfservers_path %> &raquo; <%=h @tfserver.title %>
+    <%= link_to I18n.t(:tf2_servers), tf2_servers_path %> &raquo; <%=h @tf2_server.title %>
   </div>
   <div class="info-right">
-    <% if can_edit?(@tfserver) %>
-      &nbsp; <%= link_to I18n.t(:edit_tfserver), edit_tfserver_path(@tfserver) %>
+    <% if can_edit?(@tf2_server) %>
+      &nbsp; <%= link_to I18n.t(:edit_tf2_server), edit_tf2_server_path(@tf2_server) %>
     <% end %>
   </div>
 <% end %>
