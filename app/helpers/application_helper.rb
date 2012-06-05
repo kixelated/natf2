@@ -31,7 +31,7 @@ module ApplicationHelper
   end
 
   def page_title
-    item = [@article, @category, @event, @forum, @header, @message, @topic, @user].compact.first if %w(show edit).include?(current_action)
+    item = [@article, @category, @event, @forum, @header, @message, @topic, @user, @tf2_server, @stream].compact.first if %w(show edit).include?(current_action)
     page = request.env['PATH_INFO'].delete('/').sub('new','').capitalize unless request.env['PATH_INFO'].nil?
     page = @settings.tagline if current_controller == 'home'
     "#{@settings.title}: #{item || page}"
@@ -179,5 +179,8 @@ module ApplicationHelper
 
   def justintv_chat_embed(stream)
     %Q{<iframe frameborder="0" scrolling="no" id="chat_embed" src="http://twitch.tv/chat/embed?channel=#{stream.identifier}&amp;popout_chat=true" height="423" width="234"></iframe>}.html_safe
+  end
+  def server_connect_link(tfserver)
+    %Q{<a href="steam://connect/#{tfserver.ip}:#{tfserver.port}">(Connect)</a>}.html_safe
   end
 end

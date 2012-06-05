@@ -1,0 +1,45 @@
+<% if current_controller == 'tf2_servers' %>
+  <div class="info-left">
+    <span class="title"><%=t :tf2_servers %></span>
+    <span class="detail">&nbsp;| &nbsp;<%= pluralize((@tf2_servers_count || 0), t(:tf2_server)) %></span>
+  </div>
+  <div class="info-right">
+    <span class="title">&nbsp;</span>
+  </div>
+  <div class="clear"> </div>
+
+
+<% end %>
+
+<% unless @tf2_servers.blank? %>
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <th class="tcl"><%= link_to I18n.t(:tf2_servers), tf2_servers_path %></th>
+        <th class="tcm"><%=t :players %></th>
+        <% unless current_controller == 'home' %>
+          <th class="tcl"><%=t :ip %></th>
+          <th class="tcl"><%=t :map %></th>
+          <th class="tcr"><%=t :last_updated %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% for tf2_server in @tf2_servers %>
+        <tr>
+          <td class="tcl"><%= link_to h(tf2_server.title), tf2_server %><% if current_controller == 'home' %> <%= server_connect_link(tf2_server) %><% end %></td>
+          <td class="tcm"><%= tf2_server.players %> / <%= tf2_server.max_players %></td>
+          <% unless current_controller == 'home' %>
+            <td class="tcl"><%= tf2_server.ip %>:<%= tf2_server.port %> <%= server_connect_link(tf2_server) %></td>
+          	<td class="tcl"><%= tf2_server.map %>
+			<% if not tf2_server.gametype.blank? %>
+				(<%=h tf2_server.gametype %>)
+			<% end %>
+			</td>
+            <td class="tcr"><%= time_ago_or_time_stamp(tf2_server.updated_at) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

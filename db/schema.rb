@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120306201736) do
+ActiveRecord::Schema.define(:version => 20120531043037) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id"
@@ -159,6 +159,20 @@ ActiveRecord::Schema.define(:version => 20120306201736) do
   create_table "subscriptions", :force => true do |t|
     t.integer "user_id"
     t.integer "topic_id"
+  end
+
+  create_table "tf2_servers", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "ip"
+    t.string   "gametype"
+    t.integer  "players"
+    t.string   "players_list"
+    t.string   "map"
+    t.integer  "max_players"
+    t.integer  "port",         :default => 27015
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "themes", :force => true do |t|

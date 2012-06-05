@@ -212,6 +212,12 @@ en:
   justintv: TwitchTV
   own3dtv: own3D.tv
   status: Status
+  tf2_server: Server
+  tf2_servers: Servers
+  add_a_new_tf2_server: Add a New Server
+  edit_tf2_server: Edit Server
+  add_tf2_server: Add Server
+  ip: IP
 
 
   messages:
