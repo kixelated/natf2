@@ -50,7 +50,7 @@ module Eldorado
       def self.load; ENV; end
     end
 
-    #Settings.add_source!(ENVWrap)
-    #Settings.reload!
+    Settings.add_source!(ENVWrap)
+    Settings.reload!
   end
 end
