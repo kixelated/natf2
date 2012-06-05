@@ -1,0 +1,24 @@
+<%= render "shared/error_messages", :target => @tf2_server %>
+<%= form_for @tf2_server do |f| -%>
+  <div class="box" id="box-tf2_servers-edit">
+    <span class="top"><%=t :edit_tf2_server %></span>
+    <p class="label">
+      <label for="tf2_server_title"><%=t :title %></label>
+    </p>
+    <p><%= f.text_field :title, :style => "width:31%" %></p>
+    <p class="label">
+      <label for="tf2_server_ip">IP</label>
+    </p>
+    <p><%= f.text_field :ip, :style => "width:31%" %></p>
+    <p class="label">
+      <label for="tf2_server_port"><%=t :port %></label>
+    </p>
+    <p><%= f.text_field :port, :style => "width:31%" %></p>
+    
+	<p>
+      <%= submit_tag I18n.t(:save_changes), :disable_with => I18n.t(:save_changes) %>&nbsp; 
+      <%= link_to I18n.t(:delete), @tf2_server, :confirm => I18n.t(:are_you_sure), :method => :delete %> &nbsp;
+      <%= link_to I18n.t(:cancel), @tf2_server %>
+    </p>
+  </div>
+<% end %>

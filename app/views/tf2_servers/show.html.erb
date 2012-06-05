@@ -1,0 +1,22 @@
+<div class="box" id="box-users-show">
+  <span class="top"><%=t :tf2_server %> <%= server_connect_link(@tf2_server) %></span>
+  <div style="margin-top:10px;">
+    <span class="profile-title"><%=h @tf2_server.title %></span>
+  </div>
+
+  <p style="margin-top:20px">
+  	Map: <%= @tf2_server.map %>  	
+	<% if !@tf2_server.gametype.blank? %>
+		(<%=h @tf2_server.gametype %>)
+	<% end %>
+	<br /><br />
+  	Players: <%=h @tf2_server.players %> / <%=h @tf2_server.max_players %><br />
+	<% unless @tf2_server.players_list.blank? %>
+		<% for player in @tf2_server.players_list.split("%") %>
+			<%= player %> <br />
+		<% end %>
+	<% end %>
+  </p>
+  <div class="clear"> </div>  
+
+</div>

@@ -18,7 +18,7 @@ class StreamsController < ApplicationController
 
   def create
     @stream = current_user.streams.new(params[:stream])
-    if @stream.save
+	if @stream.save
       redirect_to @stream
     else
       render :action => 'new'

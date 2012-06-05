@@ -39,5 +39,9 @@ class Stream < ActiveRecord::Base
       end
     end
   end
+  
+  def to_s
+  	return title
+  end
 
 end
