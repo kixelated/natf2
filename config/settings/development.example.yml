@@ -2,3 +2,5 @@ session_key: eldorado_development
 session_secret: ESl6X3oKM1i1RRrD2QLwUUzz9jr1zxNO
 domain: http://example.com
 steam_api_key:
+justintv_consumer_key:
+justintv_secret_key:
