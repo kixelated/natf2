@@ -41,3 +41,7 @@ disabled_tabs: # list tabs that want to hide from users (e.g. "blog events heade
 
 # STEAM
 steam_api_key:
+
+# Justin.tv
+justintv_consumer_key:
+justintv_secret_key:

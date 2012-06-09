@@ -52,6 +52,6 @@ gem 'prototype_legacy_helper', '0.0.0', :git => 'git://github.com/rails/prototyp
 
 # Omniauth OpenID for Steam Integration
 gem "omniauth-openid", "~> 1.0.1"
-
+gem "oauth", "~> 0.3.6"
 gem "steam-condenser"
 gem "httparty", "~> 0.8.1"
