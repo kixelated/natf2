@@ -13,12 +13,24 @@ class Stream < ActiveRecord::Base
     current_status = nil
     is_live = false
 
+    jtv_key = Settings.justintv_consumer_key
+    jtv_secret = Settings.justintv_secret_key
+    jtv_consumer = OAuth::Consumer.new(jtv_key, jtv_secret,
+                                   :site => "http://api.justin.tv",
+                                   :http_method => :get)
+
+    # make the access token from your consumer
+    jtv_access_token = OAuth::AccessToken.new jtv_consumer
+
+
     if self.provider == "justintv"
-      response = HTTParty.get("http://api.justin.tv/api/stream/list.xml?channel=#{identifier}")
+
+      # make a signed request!
+      response = ActiveSupport::JSON.decode(jtv_access_token.get("/api/stream/list.json?channel=#{identifier}").body)
 
       begin
-        current_viewers = response["streams"]["stream"]["channel_count"]
-        current_status = response["streams"]["stream"]["channel"]["status"]
+        current_viewers = response[0]["channel_count"]
+        current_status = response[0]["channel"]["status"]
       rescue Exception => e
         logger.error e
       ensure
