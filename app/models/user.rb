@@ -1,7 +1,7 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
-  attr_accessible :login, :email, :password, :password_confirmation, :avatar, :signature, :bio, :time_zone, :ban_message, :banned_until, :stylesheet
+  attr_accessible :login, :email, :password, :password_confirmation, :avatar, :signature, :bio, :time_zone, :ban_message, :banned_until, :stylesheet, :show_avatar, :show_user_detail
   attr_reader :password
 
   has_many :articles, :dependent => :destroy, :order => 'created_at desc'
@@ -104,6 +104,8 @@ class User < ActiveRecord::Base
   def set_defaults
     self.profile_updated_at = self.all_viewed_at = Time.now.utc
     self.time_zone = Setting.find(:first).time_zone
+	self.show_avatar = true
+	self.show_user_detail = true
   end
 
   def make_admin_if_first_user
