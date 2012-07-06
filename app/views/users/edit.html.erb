@@ -27,6 +27,8 @@
     <p><%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %></p>
     <p class="label"><label for="user_stylesheet">Stylesheet</label></p>
     <p><%= f.select :stylesheet, {"El Dorado" => "application", "Classic by roflmaoer" => "roflmaoer", "drdonutman" => "drdonutman"} %></p>
+	<p><%= f.check_box :show_avatar %> <label for="show_avatar">Show Avatars</label></p>
+	<p><%= f.check_box :show_user_detail %> <label for="show_user_detail">Show User Detail On Posts</label></p>
     <p>
       <%= submit_tag I18n.t(:save_changes), :disable_with => I18n.t(:save_changes) %>&nbsp; 
       <%= link_to I18n.t(:delete), confirm_delete_user_path %> &nbsp;

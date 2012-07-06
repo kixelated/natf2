@@ -24,17 +24,22 @@
     <tr>
       <td class="profile">
         <dl>
-          <dt><%= link_to h(post.user), post.user %>
+          <dt>
+            <% if current_user.show_user_detail %>
+              <%= link_to h(post.user), post.user %>
+			<% else %>
+              <%= link_to h(post.user), post.user, {:title => "Posts: %s" % [post.user.posts_count]} %>
+            <% end %>
             <% if !post.user.steamid.blank? %>
               &nbsp;<%= link_to steam_icon, steam_for(post.user) %>
             <% end %>   
           </dt>
           <dd class="rank"><%= rank_for(post.user) %></dd>
           <dd class="avatar">
-            <%= link_to avatar_for(post.user), post.user unless post.user.avatar.nil? %>
+            <%= link_to avatar_for(post.user), post.user unless post.user.avatar.nil? or not current_user.show_avatar %>
           </dd>
-          <dd><%=t :registered %>: <%= I18n.l(post.user.created_at, :format => :ed_month) %></dd>
-          <dd><%=t :posts %>: <%= post.user.posts_count %></dd>
+          <% if current_user.show_user_detail %><dd><%=t :registered %>: <%= I18n.l(post.user.created_at, :format => :ed_month) %></dd>
+          <dd><%=t :posts %>: <%= post.user.posts_count %></dd><% end %>
         </dl>
       </td>
       <td class="body">
