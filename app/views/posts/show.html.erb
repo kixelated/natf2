@@ -27,7 +27,7 @@
           <dt>
             <% if current_user.show_user_detail %>
               <%= link_to h(post.user), post.user %>
-			<% else %>
+            <% else %>
               <%= link_to h(post.user), post.user, {:title => "Posts: %s" % [post.user.posts_count]} %>
             <% end %>
             <% if !post.user.steamid.blank? %>
